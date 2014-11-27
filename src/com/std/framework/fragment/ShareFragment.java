@@ -111,6 +111,115 @@ public class ShareFragment extends Fragment implements OnClickListener {
 		// 添加微信、微信朋友圈平台
 		addWXPlatform();
 	}
+	
+	/**
+	 * 根据不同的平台设置不同的分享内容</br>
+	 */
+	private void setShareContent() {
+		UMImage localImage = new UMImage(getActivity(), R.drawable.device);
+		UMImage urlImage = new UMImage(getActivity(), "http://www.umeng.com/images/pic/social/integrated_3.png");
+		// UMImage resImage = new UMImage(getActivity(), R.drawable.icon);
+
+		// 视频分享
+		UMVideo video = new UMVideo("http://v.youku.com/v_show/id_XNTc0ODM4OTM2.html");
+		// vedio.setThumb("http://www.umeng.com/images/pic/home/social/img-1.png");
+		video.setTitle("友盟社会化组件视频");
+		video.setThumb(urlImage);
+
+		UMusic uMusic = new UMusic("http://music.huoxing.com/upload/20130330/1364651263157_1085.mp3");
+		uMusic.setAuthor("umeng");
+		uMusic.setTitle("天籁之音");
+		uMusic.setThumb(urlImage);
+		// uMusic.setThumb("http://www.umeng.com/images/pic/social/chart_1.png");
+
+		WeiXinShareContent weixinContent = new WeiXinShareContent();
+		weixinContent.setShareContent("----移动电子处方平台--正文内容....");
+		weixinContent.setTitle("移动电子处方平台--标题内容");
+		weixinContent.setTargetUrl("http://www.umeng.com");
+		weixinContent.setShareMedia(localImage);
+		mController.setShareMedia(weixinContent);
+
+		// 设置朋友圈分享的内容
+		CircleShareContent circleMedia = new CircleShareContent();
+		circleMedia.setShareContent("----移动电子处方平台--正文内容....");
+		circleMedia.setTitle("移动电子处方平台--标题内容");
+		circleMedia.setShareImage(localImage);
+//		 circleMedia.setShareMedia(uMusic);
+		// circleMedia.setShareMedia(video);
+		circleMedia.setTargetUrl("http://www.umeng.com");
+		mController.setShareMedia(circleMedia);
+
+		// 设置renren分享内容
+		RenrenShareContent renrenShareContent = new RenrenShareContent();
+		renrenShareContent.setShareContent("人人分享内容");
+		UMImage image = new UMImage(getActivity(), BitmapFactory.decodeResource(getResources(), R.drawable.device));
+		image.setTitle("thumb title");
+		image.setThumb("http://www.umeng.com/images/pic/social/integrated_3.png");
+		renrenShareContent.setShareImage(image);
+		renrenShareContent.setAppWebSite("http://www.umeng.com/social");
+		mController.setShareMedia(renrenShareContent);
+
+		UMImage qzoneImage = new UMImage(getActivity(), "http://www.umeng.com/images/pic/social/integrated_3.png");
+		qzoneImage.setTargetUrl("http://www.umeng.com/images/pic/social/integrated_3.png");
+
+		// 设置QQ空间分享内容
+		QZoneShareContent qzone = new QZoneShareContent();
+		qzone.setShareContent("----移动电子处方平台--正文内容----");
+		qzone.setTargetUrl("http://www.umeng.com/social");
+		qzone.setTitle("移动电子处方平台--QZone标题内容");
+		qzone.setShareImage(localImage);
+		mController.setShareMedia(qzone);
+
+		//        video.setThumb(new UMImage(getActivity(), BitmapFactory.decodeResource(
+		//                getResources(), R.drawable.device)));
+
+		QQShareContent qqShareContent = new QQShareContent();
+		qqShareContent.setShareContent("----移动电子处方平台--正文内容----");
+		qqShareContent.setTitle("移动电子处方平台--QQ标题内容");
+		qqShareContent.setShareImage(localImage);
+		// qqShareContent.setShareMusic(uMusic);
+		// qqShareContent.setShareVideo(video);
+		//        qqShareContent.setTargetUrl("http://www.umeng.com/social");
+		qqShareContent.setTargetUrl("http://www.qq.com/a.apk");
+		mController.setShareMedia(qqShareContent);
+
+		// 视频分享
+		UMVideo umVideo = new UMVideo("http://v.youku.com/v_show/id_XNTc0ODM4OTM2.html");
+		umVideo.setThumb("http://www.umeng.com/images/pic/home/social/img-1.png");
+		umVideo.setTitle("友盟社会化组件视频");
+
+		TencentWbShareContent tencent = new TencentWbShareContent();
+		tencent.setShareContent("来自友盟社会化组件（SDK）让移动应用快速整合社交分享功能，腾讯微博");
+		// 设置tencent分享内容
+		mController.setShareMedia(tencent);
+
+		// 设置邮件分享内容， 如果需要分享图片则只支持本地图片
+		MailShareContent mail = new MailShareContent(localImage);
+		mail.setTitle("share form umeng social sdk");
+		mail.setShareContent("来自友盟社会化组件（SDK）让移动应用快速整合社交分享功能，email");
+		// 设置tencent分享内容
+		mController.setShareMedia(mail);
+
+		// 设置短信分享内容
+		SmsShareContent sms = new SmsShareContent();
+		sms.setShareContent("来自友盟社会化组件（SDK）让移动应用快速整合社交分享功能，短信");
+		sms.setShareImage(urlImage);
+		mController.setShareMedia(sms);
+
+		SinaShareContent sinaContent = new SinaShareContent(urlImage);
+		sinaContent.setShareContent("来自友盟社会化组件（SDK）让移动应用快速整合社交分享功能，新浪微博");
+		mController.setShareMedia(sinaContent);
+
+		TwitterShareContent twitterShareContent = new TwitterShareContent();
+		twitterShareContent.setShareContent("来自友盟社会化组件（SDK）让移动应用快速整合社交分享功能，TWITTER");
+		twitterShareContent.setShareMedia(localImage);
+		mController.setShareMedia(twitterShareContent);
+
+		GooglePlusShareContent googlePlusShareContent = new GooglePlusShareContent();
+		googlePlusShareContent.setShareContent("来自友盟社会化组件（SDK）让移动应用快速整合社交分享功能，G+");
+		googlePlusShareContent.setShareMedia(localImage);
+		mController.setShareMedia(googlePlusShareContent);
+	}
 
 	/**
 	 * @功能描述 : 初始化视图控件，比如Button
@@ -206,130 +315,7 @@ public class ShareFragment extends Fragment implements OnClickListener {
 		}, platforms);
 	}
 
-	/**
-	 * 根据不同的平台设置不同的分享内容</br>
-	 */
-	private void setShareContent() {
-
-		// 配置SSO
-		mController.getConfig().setSsoHandler(new SinaSsoHandler());
-		mController.getConfig().setSsoHandler(new TencentWBSsoHandler());
-
-		QZoneSsoHandler qZoneSsoHandler = new QZoneSsoHandler(getActivity(), "100424468", "c7394704798a158208a74ab60104f0ba");
-		qZoneSsoHandler.addToSocialSDK();
-		mController.setShareContent("友盟社会化组件（SDK）让移动应用快速整合社交分享功能");
-
-		// APP ID：201874, API
-		// * KEY：28401c0964f04a72a14c812d6132fcef, Secret
-		// * Key：3bf66e42db1e4fa9829b955cc300b737.
-		RenrenSsoHandler renrenSsoHandler = new RenrenSsoHandler(getActivity(), "201874", "28401c0964f04a72a14c812d6132fcef",
-				"3bf66e42db1e4fa9829b955cc300b737");
-		mController.getConfig().setSsoHandler(renrenSsoHandler);
-
-		UMImage localImage = new UMImage(getActivity(), R.drawable.device);
-		UMImage urlImage = new UMImage(getActivity(), "http://www.umeng.com/images/pic/social/integrated_3.png");
-		// UMImage resImage = new UMImage(getActivity(), R.drawable.icon);
-
-		// 视频分享
-		UMVideo video = new UMVideo("http://v.youku.com/v_show/id_XNTc0ODM4OTM2.html");
-		// vedio.setThumb("http://www.umeng.com/images/pic/home/social/img-1.png");
-		video.setTitle("友盟社会化组件视频");
-		video.setThumb(urlImage);
-
-		UMusic uMusic = new UMusic("http://music.huoxing.com/upload/20130330/1364651263157_1085.mp3");
-		uMusic.setAuthor("umeng");
-		uMusic.setTitle("天籁之音");
-		uMusic.setThumb(urlImage);
-		// uMusic.setThumb("http://www.umeng.com/images/pic/social/chart_1.png");
-
-		WeiXinShareContent weixinContent = new WeiXinShareContent();
-		weixinContent.setShareContent("----移动电子处方平台--正文内容....");
-		weixinContent.setTitle("移动电子处方平台--标题内容");
-		weixinContent.setTargetUrl("http://www.umeng.com");
-		weixinContent.setShareMedia(localImage);
-		mController.setShareMedia(weixinContent);
-
-		// 设置朋友圈分享的内容
-		CircleShareContent circleMedia = new CircleShareContent();
-		circleMedia.setShareContent("----移动电子处方平台--正文内容....");
-		circleMedia.setTitle("移动电子处方平台--标题内容");
-		circleMedia.setShareImage(localImage);
-//		 circleMedia.setShareMedia(uMusic);
-		// circleMedia.setShareMedia(video);
-		circleMedia.setTargetUrl("http://www.umeng.com");
-		mController.setShareMedia(circleMedia);
-
-		// 设置renren分享内容
-		RenrenShareContent renrenShareContent = new RenrenShareContent();
-		renrenShareContent.setShareContent("人人分享内容");
-		UMImage image = new UMImage(getActivity(), BitmapFactory.decodeResource(getResources(), R.drawable.device));
-		image.setTitle("thumb title");
-		image.setThumb("http://www.umeng.com/images/pic/social/integrated_3.png");
-		renrenShareContent.setShareImage(image);
-		renrenShareContent.setAppWebSite("http://www.umeng.com/social");
-		mController.setShareMedia(renrenShareContent);
-
-		UMImage qzoneImage = new UMImage(getActivity(), "http://www.umeng.com/images/pic/social/integrated_3.png");
-		qzoneImage.setTargetUrl("http://www.umeng.com/images/pic/social/integrated_3.png");
-
-		// 设置QQ空间分享内容
-		QZoneShareContent qzone = new QZoneShareContent();
-		qzone.setShareContent("来自友盟社会化组件（SDK）让移动应用快速整合社交分享功能 -- QZone");
-		qzone.setTargetUrl("http://www.umeng.com/social");
-		qzone.setTitle("QZone title");
-		qzone.setShareImage(urlImage);
-		mController.setShareMedia(qzone);
-
-		//        video.setThumb(new UMImage(getActivity(), BitmapFactory.decodeResource(
-		//                getResources(), R.drawable.device)));
-
-		QQShareContent qqShareContent = new QQShareContent();
-		qqShareContent.setShareContent("----移动电子处方平台--正文内容----朋友圈");
-		qqShareContent.setTitle("hello, happy day!");
-		qqShareContent.setShareImage(urlImage);
-		// qqShareContent.setShareMusic(uMusic);
-		// qqShareContent.setShareVideo(video);
-		//        qqShareContent.setTargetUrl("http://www.umeng.com/social");
-		qqShareContent.setTargetUrl("http://www.qq.com/a.apk");
-		mController.setShareMedia(qqShareContent);
-
-		// 视频分享
-		UMVideo umVideo = new UMVideo("http://v.youku.com/v_show/id_XNTc0ODM4OTM2.html");
-		umVideo.setThumb("http://www.umeng.com/images/pic/home/social/img-1.png");
-		umVideo.setTitle("友盟社会化组件视频");
-
-		TencentWbShareContent tencent = new TencentWbShareContent();
-		tencent.setShareContent("来自友盟社会化组件（SDK）让移动应用快速整合社交分享功能，腾讯微博");
-		// 设置tencent分享内容
-		mController.setShareMedia(tencent);
-
-		// 设置邮件分享内容， 如果需要分享图片则只支持本地图片
-		MailShareContent mail = new MailShareContent(localImage);
-		mail.setTitle("share form umeng social sdk");
-		mail.setShareContent("来自友盟社会化组件（SDK）让移动应用快速整合社交分享功能，email");
-		// 设置tencent分享内容
-		mController.setShareMedia(mail);
-
-		// 设置短信分享内容
-		SmsShareContent sms = new SmsShareContent();
-		sms.setShareContent("来自友盟社会化组件（SDK）让移动应用快速整合社交分享功能，短信");
-		sms.setShareImage(urlImage);
-		mController.setShareMedia(sms);
-
-		SinaShareContent sinaContent = new SinaShareContent(urlImage);
-		sinaContent.setShareContent("来自友盟社会化组件（SDK）让移动应用快速整合社交分享功能，新浪微博");
-		mController.setShareMedia(sinaContent);
-
-		TwitterShareContent twitterShareContent = new TwitterShareContent();
-		twitterShareContent.setShareContent("来自友盟社会化组件（SDK）让移动应用快速整合社交分享功能，TWITTER");
-		twitterShareContent.setShareMedia(localImage);
-		mController.setShareMedia(twitterShareContent);
-
-		GooglePlusShareContent googlePlusShareContent = new GooglePlusShareContent();
-		googlePlusShareContent.setShareContent("来自友盟社会化组件（SDK）让移动应用快速整合社交分享功能，G+");
-		googlePlusShareContent.setShareMedia(localImage);
-		mController.setShareMedia(googlePlusShareContent);
-	}
+	
 
 	/**
 	 * 添加所有的平台</br>
@@ -497,8 +483,8 @@ public class ShareFragment extends Fragment implements OnClickListener {
 	 * @return
 	 */
 	private void addQQQZonePlatform() {
-		String appId = "wx2927dce7f27084a3";
-		String appKey = "8d84c8ce7465be8c286516f1e4e0cc53";
+		String appId = "1103537267";
+		String appKey = "Q9VNTYNaako4OOZd";
 		// 添加QQ支持, 并且设置QQ分享内容的target url
 		UMQQSsoHandler qqSsoHandler = new UMQQSsoHandler(getActivity(), appId, appKey);
 		qqSsoHandler.setTargetUrl("http://www.umeng.com");
