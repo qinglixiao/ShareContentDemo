@@ -1,0 +1,38 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="slidingmenu_offset">120dp</dimen>
+    <dimen name="list_padding">10dp</dimen>
+    <dimen name="shadow_width">15dp</dimen>
+
+    <integer name="num_cols">1</integer>
+    <!-- 标题栏标题文字大小 -->
+    <dimen name="title_text_size">23sp</dimen>
+    
+    <!-- 标题栏高度 -->
+    <dimen name="title_bar_height">60dp</dimen>
+    <!-- 标题栏菜单项字体大小 -->
+    <dimen name="titile_bar_item_size">18sp</dimen>
+    
+    <!-- 弹出框标题字体大小 -->
+    <dimen name="dialog_title_size">20sp</dimen>
+    <!-- 弹出框内容字体大小 -->
+ 	<dimen name="dialog_content_size">17sp</dimen>
+ 	
+ 	 <dimen name="body_padding_medium">10dp</dimen>
+    <dimen name="body_padding_large">10dp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_xlarge">18sp</dimen>
+    <dimen name="speaker_image_size">36dp</dimen>
+    <dimen name="speaker_image_padding">8dp</dimen>
+    <dimen name="vendor_image_size">100dp</dimen>
+    
+    <dimen name="actionbar_height">45dip</dimen>
+    <dimen name="actionbar_item_height">45dip</dimen>
+    <dimen name="actionbar_item_width">45dip</dimen>
+ 	
+</resources>

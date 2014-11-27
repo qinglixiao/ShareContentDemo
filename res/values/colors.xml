@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 屏幕黑色不透明背景 -->
+    <drawable name="screen_background_black">#ff000000</drawable>
+    <!-- 半透明背景 -->
+    <drawable name="translucent_background">#e0000000</drawable>
+    <!-- 透明背景 -->
+    <drawable name="transparent_background">#00000000</drawable>
+
+    <color name="solid_red">#f00</color>
+    <color name="solid_blue">#0000ff</color>
+    <color name="solid_green">#f0f0</color>
+    <color name="solid_yellow">#ffffff00</color>
+
+    <!-- 白色 -->
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <!-- 蓝色 -->
+    <color name="blue">#3bbcf2</color>
+    <color name="blue_item_selected">#e6f2f2</color>
+    <!-- 红色 -->
+    <color name = "red">#ff0000</color>
+    <!-- 灰色 -->
+    <color name="gray">#8a8a8a</color>
+
+    <!-- 密码输入提示(灰色) -->
+    <color name="gray_pwd">#b3b2b2</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- 左侧菜单设配置项 -->
+    <color name="menu_background">#212121</color>
+    <color name="menu_group_text_color">#8f8f8f</color>
+    
+      <color name="body_text_1">#ff000000</color>
+    <color name="body_text_2">#99000000</color>
+    <color name="body_text_disabled">#66000000</color>
+    <color name="body_text_1_inverse">#ffffffff</color>
+    <color name="body_text_2_inverse">#99ffffff</color>
+    <color name="accent_1">#ff29549f</color>
+    <color name="hyperlink">#ffff549f</color>
+    <color name="background_1">#ffffffff</color>
+    <color name="whats_on_separator">#4d000000</color>
+    <color name="all_track_color">#ff222222</color>
+    <color name="block_column_1">#ff0fabff</color>
+    <color name="block_column_2">#ffdf1831</color>
+    <color name="block_column_3">#ff009939</color>
+    
+</resources>
