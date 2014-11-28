@@ -2,9 +2,11 @@ package com.std.framework.view;
 
 import java.util.ArrayList;
 
+import android.R.anim;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,8 +69,15 @@ public class RightPopupMenu extends PopupWindow {
 	private void setDefaultAttrs() {
 		setFocusable(true);
 		setOutsideTouchable(true);
-		setWindowLayoutMode(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		setWidth(getScreenWidth()/2);
+		setHeight(LayoutParams.WRAP_CONTENT);
 		setBackgroundDrawable(new BitmapDrawable());
+		setAnimationStyle(android.R.style.Animation_Dialog);
+	}
+	
+	private int getScreenWidth(){
+		DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+		return displayMetrics.widthPixels;
 	}
 
 	public void setOnMenuClickListener(OnMenuClickListener onMenuClickListener) {
