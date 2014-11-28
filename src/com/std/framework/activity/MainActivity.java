@@ -23,8 +23,6 @@ import com.std.framework.view.RightPopupMenu.OnMenuClickListener;
 
 public class MainActivity extends Activity {
 	private static final String TAG = "LX";
-	private int titleBarHeight;
-	private int statusBarHeight;
 	private RightPopupMenu popupMenu;
 
 	@Override
@@ -34,21 +32,8 @@ public class MainActivity extends Activity {
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction().add(R.id.content, new ShareFragment()).commit();
 		}
-		calcBar();
 	}
 
-	private void calcBar() {
-		Rect frame = new Rect();
-		getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
-		statusBarHeight = frame.top;
-
-		getWindow().findViewById(Window.ID_ANDROID_CONTENT);
-		int contentTop = getWindow().findViewById(Window.ID_ANDROID_CONTENT).getTop();
-		//statusBarHeight是上面所求的状态栏的高度  
-		titleBarHeight = contentTop - statusBarHeight;
-	}
-
-	//获取手机状态栏高度
 	public static int getStatusBarHeight(Context context) {
 		Class<?> c = null;
 		Object obj = null;
