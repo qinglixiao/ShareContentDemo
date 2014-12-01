@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.R.anim;
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -71,7 +72,7 @@ public class RightPopupMenu extends PopupWindow {
 		setOutsideTouchable(true);
 		setWidth(getScreenWidth()/2);
 		setHeight(LayoutParams.WRAP_CONTENT);
-		setBackgroundDrawable(new BitmapDrawable());
+		setBackgroundDrawable(new BitmapDrawable(context.getResources()));
 		setAnimationStyle(android.R.style.Animation_Dialog);
 	}
 	
