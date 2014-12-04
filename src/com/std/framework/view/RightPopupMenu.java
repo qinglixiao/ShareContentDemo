@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
@@ -21,6 +22,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.std.framework.R;
+import com.umeng.socialize.net.v;
 
 public class RightPopupMenu extends PopupWindow {
 	private Context context;
@@ -29,6 +31,7 @@ public class RightPopupMenu extends PopupWindow {
 	private ArrayList<MenuItem> menus;
 	private MenuAdapter adapter;
 	private OnMenuClickListener onMenuClickListener;
+	private boolean isMenuChanged;
 
 	public RightPopupMenu(Context context) {
 		this.context = context;
@@ -51,13 +54,13 @@ public class RightPopupMenu extends PopupWindow {
 		lst_menu.setOnItemClickListener(onItemClickListener);
 		setContentView(v_content);
 	}
-	
+
 	private OnItemClickListener onItemClickListener = new OnItemClickListener() {
 
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			// TODO Auto-generated method stub
-			if(onMenuClickListener != null)
+			if (onMenuClickListener != null)
 				onMenuClickListener.onClick(menus.get(position));
 		}
 	};
@@ -70,15 +73,32 @@ public class RightPopupMenu extends PopupWindow {
 	private void setDefaultAttrs() {
 		setFocusable(true);
 		setOutsideTouchable(true);
-		setWidth(getScreenWidth()/2);
 		setHeight(LayoutParams.WRAP_CONTENT);
 		setBackgroundDrawable(new BitmapDrawable(context.getResources()));
 		setAnimationStyle(android.R.style.Animation_Dialog);
 	}
+
+	@Override
+	public void showAtLocation(View parent, int gravity, int x, int y) {
+		// TODO Auto-generated method stub
+		setWidth(windowAdjustContent());
+		super.showAtLocation(parent, gravity, x, y);
+	}
 	
-	private int getScreenWidth(){
-		DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-		return displayMetrics.widthPixels;
+	@Override
+	public void showAsDropDown(View anchor, int xoff, int yoff) {
+		// TODO Auto-generated method stub
+		setWidth(windowAdjustContent());
+		super.showAsDropDown(anchor, xoff, yoff);
+	}
+
+	private int windowAdjustContent() {
+		if (isMenuChanged) {
+			v_content.measure(MeasureSpec.makeMeasureSpec(LayoutParams.WRAP_CONTENT, MeasureSpec.EXACTLY),
+					MeasureSpec.makeMeasureSpec(LayoutParams.WRAP_CONTENT, MeasureSpec.AT_MOST));
+			isMenuChanged = false;
+		}
+		return v_content.getMeasuredWidth();
 	}
 
 	public void setOnMenuClickListener(OnMenuClickListener onMenuClickListener) {
@@ -87,6 +107,7 @@ public class RightPopupMenu extends PopupWindow {
 
 	public void addMenu(MenuItem item) {
 		menus.add(item);
+		isMenuChanged = true;
 	}
 
 	public class MenuAdapter extends BaseAdapter {

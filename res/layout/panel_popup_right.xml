@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:divider="@color/diviline"
         android:dividerHeight="1dp" >
-
     </ListView>
+    
 
 </LinearLayout>
